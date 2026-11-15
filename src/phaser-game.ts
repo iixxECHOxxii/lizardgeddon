@@ -1,17 +1,15 @@
 import Phaser from 'phaser';
-import { IslandScene, WIDTH, HEIGHT } from './game';
+import { IslandScene } from './game';
 
 const start = () => new Phaser.Game({
   type: Phaser.AUTO,
   parent: 'game',
-  width: WIDTH,
-  height: HEIGHT,
+  width: window.innerWidth,
+  height: window.innerHeight,
   backgroundColor: '#0b0f2a',
-  // pixelArt keeps every pixel sharp when the small canvas is scaled up.
-  pixelArt: true,
-  scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
+  pixelArt: false, // Smoothly render the new hand-painted wizard sprites.
+  scale: { mode: Phaser.Scale.RESIZE, autoCenter: Phaser.Scale.NO_CENTER },
   scene: IslandScene,
 });
 
-// Wait for the pixel font so text drawn inside the game uses it from the start.
 document.fonts.load('8px "Press Start 2P"').then(start, start);
