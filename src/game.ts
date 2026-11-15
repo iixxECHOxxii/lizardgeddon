@@ -265,18 +265,18 @@ export class IslandScene extends Phaser.Scene {
   constructor() { super('island'); }
 
   preload(): void {
-    for (const part of ['rear-far','front-far','rear-near','front-near','tail','body']) this.load.image(`lizard-${part}`, `/assets/lizard-rig/${part}.png`);
-    this.load.image('stone-floor-art', '/assets/dungeon/stone-floor.png');
-    this.load.image('broken-column-art', '/assets/dungeon/broken-column.png');
+    for (const part of ['rear-far','front-far','rear-near','front-near','tail','body']) this.load.image(`lizard-${part}`, `./assets/lizard-rig/${part}.png`);
+    this.load.image('stone-floor-art', './assets/dungeon/stone-floor.png');
+    this.load.image('broken-column-art', './assets/dungeon/broken-column.png');
     for (const asset of ['brazier', 'crystal', 'rubble', 'torch-glow', 'crystal-glow']) {
-      this.load.image(`dungeon-${asset}`, `/assets/dungeon/${asset}.png`);
+      this.load.image(`dungeon-${asset}`, `./assets/dungeon/${asset}.png`);
     }
     for (const direction of DIRECTIONS) {
-      this.load.image(`wizard-${direction}`, `/assets/wizard/wizard-${direction}.png`);
+      this.load.image(`wizard-${direction}`, `./assets/wizard/wizard-${direction}.png`);
     }
     for (const direction of DIRECTIONS) {
       for (let i = 0; i < 6; i++) {
-        this.load.image(`wizard-${direction}-walk-${i}`, `/assets/wizard/wizard-${direction}-walk-${i}.png`);
+        this.load.image(`wizard-${direction}-walk-${i}`, `./assets/wizard/wizard-${direction}-walk-${i}.png`);
       }
     }
   }
@@ -342,7 +342,7 @@ export class IslandScene extends Phaser.Scene {
     const overlay = document.createElement('div');
     overlay.setAttribute('role', 'dialog');
     overlay.setAttribute('aria-label', 'Lizardgeddon title screen');
-    overlay.style.cssText = `position:absolute;z-index:100;overflow:hidden;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;color:#f9eac7;background:linear-gradient(180deg,rgba(13,7,22,.85),rgba(13,7,22,.04) 38%,rgba(12,7,20,.22) 57%,rgba(12,7,20,.95)),url(/assets/title/lizardgeddon-title.png) center/cover no-repeat;font-family:Georgia,serif;`;
+    overlay.style.cssText = `position:absolute;z-index:100;overflow:hidden;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;color:#f9eac7;background:linear-gradient(180deg,rgba(13,7,22,.85),rgba(13,7,22,.04) 38%,rgba(12,7,20,.22) 57%,rgba(12,7,20,.95)),url(./assets/title/lizardgeddon-title.png) center/cover no-repeat;font-family:Georgia,serif;`;
     overlay.innerHTML = `<div style="padding-top:4%;text-shadow:0 3px 8px #09040e,0 0 20px #180820"><div style="font-size:clamp(22px,5vw,62px);font-weight:900;letter-spacing:.065em;color:#f6d58a;-webkit-text-stroke:1px #58341e">LIZARDGEDDON</div><div style="font-size:clamp(10px,1.8vw,19px);font-style:italic;margin-top:4px">One wizard. Too many lizards.</div><div style="font-size:clamp(10px,1.65vw,18px);font-style:italic;margin-top:5px;color:#f4d999">How long can you survive?</div></div><div style="display:flex;flex-direction:column;align-items:center;gap:9px;padding-bottom:4%;width:95%;text-shadow:0 2px 5px #000"><button type="button" id="lizardgeddon-play" style="cursor:pointer;background:linear-gradient(#6938a4,#31144e);border:2px solid #e4ba6d;border-radius:6px;color:#fff1ce;font:700 clamp(12px,2vw,22px) Georgia,serif;padding:10px 24px;box-shadow:0 0 16px #4b1b89">BEGIN THE SLAUGHTER</button><div style="font:clamp(10px,1.35vw,15px) Arial,sans-serif;background:#120b20bd;padding:7px 10px;border-radius:5px;line-height:1.5">WASD / Arrows: Move &nbsp; • &nbsp; Mouse: Aim &nbsp; • &nbsp; Left-click: Fire &nbsp; • &nbsp; Right-click: Chain lightning<br>M: Mute &nbsp; • &nbsp; + / −: Volume &nbsp; • &nbsp; Collect glowing power-ups to survive</div></div>`;
     parent.appendChild(overlay);
     const position = () => {
